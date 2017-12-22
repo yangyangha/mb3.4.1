@@ -26,6 +26,12 @@ import org.apache.ibatis.cache.Cache;
  *
  * @author Clinton Begin
  */
+/**
+ * 装饰模式的灵活运用，因为从角色角度来讲，并不完全符合装饰角色，因为没有decorator只有concrete decorator，此处的cache 当作两个角色：component and decorator。
+ * Refer ：
+ * 		https://www.javacodegeeks.com/2015/09/decorator-design-pattern.html
+ * 		http://lavasoft.blog.51cto.com/62575/90853/
+ */
 public class FifoCache implements Cache {
 
   private final Cache delegate;

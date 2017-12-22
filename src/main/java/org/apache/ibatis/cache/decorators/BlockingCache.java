@@ -64,6 +64,7 @@ public class BlockingCache implements Cache {
     }
   }
 
+  // TODO: 2017/2/9 hashmap 是线程不安全当，是存储查询结果当缓存，为什么不直接使用线程安全当concurenthashmap 而借助锁机制？
   @Override
   public Object getObject(Object key) {
     acquireLock(key);

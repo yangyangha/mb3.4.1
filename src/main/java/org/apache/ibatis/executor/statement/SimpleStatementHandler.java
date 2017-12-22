@@ -81,6 +81,18 @@ public class SimpleStatementHandler extends BaseStatementHandler {
     return resultSetHandler.<E>handleCursorResultSets(statement);
   }
 
+    /**
+     * // todo resultset https://www.cnblogs.com/tianguook/p/3383045.html
+     * resultset
+     * 当使用ResultSet的时候，当查询出来的数据集记录很多，有一千万条的时候，那rs所指的对象是否会占用很多内存，如果记录过多，那程序会不会把系统的内存用光呢
+
+     不会的，ResultSet表面看起来是一个记录集，其实这个对象中只是记录了结果集的相关信息，具体的记录并没有存放在对象中，具体的记录内容知道你通过next方法提取的时候，
+     再通过相关的getXXXXX方法提取字段内容的时候才能从数据库中得到，这些并不会占用内存，具体消耗内存是由于你将记录集中的数据提取出来加入到你自己的集合中的时候才会发生，
+     如果你没有使用集合记录所有的记录就不会发生消耗内存厉害的情况。
+
+     内存溢出
+     https://www.cnblogs.com/200911/p/3965108.html
+     */
   @Override
   protected Statement instantiateStatement(Connection connection) throws SQLException {
     if (mappedStatement.getResultSetType() != null) {

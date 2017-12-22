@@ -29,6 +29,11 @@ import org.apache.ibatis.transaction.Transaction;
 
 /**
  * @author Clinton Begin
+ *  * 设计模式：使用两种模版方法、装饰模式
+ *          模板方法：BaseExecutor是抽象类，SimpleExecutor是具体类。
+ *          装饰模式：SimpleExecutor是Executor的装饰器。
+ *
+ *          这两种设计模式在spring中多次使用。
  */
 public interface Executor {
 
