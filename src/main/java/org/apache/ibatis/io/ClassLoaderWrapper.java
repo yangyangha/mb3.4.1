@@ -22,6 +22,11 @@ import java.net.URL;
  * A class to wrap access to multiple class loaders making them work as one
  *
  * @author Clinton Begin
+ *
+ * https://blog.csdn.net/fuzhongmin05/article/details/57404890
+ *
+ * https://blog.csdn.net/javazejian/article/details/73413292#类加载的机制的层次结构
+ * https://blog.csdn.net/javazejian/article/details/73413292
  */
 public class ClassLoaderWrapper {
 
@@ -182,7 +187,7 @@ public class ClassLoaderWrapper {
       if (null != cl) {
 
         try {
-
+          //http://www.jb51.net/article/117468.htm
           Class<?> c = Class.forName(name, true, cl);
 
           if (null != c) {
@@ -201,6 +206,7 @@ public class ClassLoaderWrapper {
 
   }
 
+  //https://blog.csdn.net/peter_k/article/details/1667685
   ClassLoader[] getClassLoaders(ClassLoader classLoader) {
     return new ClassLoader[]{
         classLoader,
