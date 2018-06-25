@@ -28,6 +28,12 @@ import org.apache.ibatis.session.SqlSession;
  * @author Eduardo Macarron
  * 模式：代理
  * 没看懂
+ *
+ * invoke 方法调用
+ * http://paddy-w.iteye.com/blog/841798
+ *
+ * 动态代理
+ * https://www.cnblogs.com/LCcnblogs/p/6823982.html
  */
 public class MapperProxy<T> implements InvocationHandler, Serializable {
 
