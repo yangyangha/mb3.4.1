@@ -21,6 +21,7 @@ import java.util.List;
 
 /**
  * @author Clinton Begin
+ * 重构
  */
 public class InterceptorChain {
 
@@ -36,7 +37,15 @@ public class InterceptorChain {
   public void addInterceptor(Interceptor interceptor) {
     interceptors.add(interceptor);
   }
-  
+
+    /**
+     * yang
+     * https://blog.csdn.net/cilen/article/details/7744969
+     * 重构——改善既有代码的设计
+     * encapsulate collection 只读
+     * 场景：
+     *      防止用户不知情的情况下数据被篡改
+     */
   public List<Interceptor> getInterceptors() {
     return Collections.unmodifiableList(interceptors);
   }

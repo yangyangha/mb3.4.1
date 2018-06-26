@@ -53,6 +53,10 @@ public class Plugin implements InvocationHandler {
     return target;
   }
 
+    /**
+     * 动态代理
+     *
+     */
   @Override
   public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
     try {
