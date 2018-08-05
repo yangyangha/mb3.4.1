@@ -17,6 +17,7 @@ package org.apache.ibatis.parsing;
 
 /**
  * 通用标记解析器
+ * 功能：只负责解析，处理交由处理器
  * @author Clinton Begin
  */
 public class GenericTokenParser {

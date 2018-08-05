@@ -32,6 +32,11 @@ public class PropertyParser {
     return parser.parse(string);
   }
 
+    /**
+     * 静态内部类：标记处理器
+     *
+     *
+     */
   private static class VariableTokenHandler implements TokenHandler {
     private Properties variables;
 

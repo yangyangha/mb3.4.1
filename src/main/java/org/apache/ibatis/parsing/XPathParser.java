@@ -40,6 +40,9 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
 /**
+ *
+ * https://www.jianshu.com/p/ec40a82cae28
+ * document 解析方式
  * @author Clinton Begin
  */
 public class XPathParser {
