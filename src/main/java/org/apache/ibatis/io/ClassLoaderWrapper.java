@@ -22,6 +22,16 @@ import java.net.URL;
  * A class to wrap access to multiple class loaders making them work as one
  *
  * @author Clinton Begin
+ *
+ * 类加载机制：
+ *      1、不同级别的类加载器对应不同的加载目录、包名（例如，系统类加载器没有权限加载核心API包的类--例如，java.lang ）
+ *      2、
+ *
+ * https://blog.csdn.net/fuzhongmin05/article/details/57404890
+ * tomcat 类加载机制，以及上下文获取类加载器
+ *
+ * https://blog.csdn.net/javazejian/article/details/73413292#类加载的机制的层次结构
+ * https://blog.csdn.net/javazejian/article/details/73413292
  */
 public class ClassLoaderWrapper {
   /**

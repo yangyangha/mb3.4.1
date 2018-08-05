@@ -26,6 +26,8 @@ import org.apache.ibatis.session.Configuration;
 /**
  * @author Clinton Begin
  * @author Simone Tripodi
+ *
+ * 设计模式：模板方法
  */
 public abstract class BaseTypeHandler<T> extends TypeReference<T> implements TypeHandler<T> {
 
