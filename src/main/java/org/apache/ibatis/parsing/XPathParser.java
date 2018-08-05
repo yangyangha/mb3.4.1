@@ -42,7 +42,7 @@ import org.xml.sax.SAXParseException;
 /**
  *
  * https://www.jianshu.com/p/ec40a82cae28
- * document 解析方式
+ * document 解析方式 https://www.cnblogs.com/longqingyang/p/5577937.html
  * @author Clinton Begin
  */
 public class XPathParser {
