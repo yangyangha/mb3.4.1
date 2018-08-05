@@ -25,6 +25,9 @@ import java.util.Map;
 
 public class GenericTokenParserTest {
 
+    /**
+     * 静态内部类，只此一处使用
+     */
   public static class VariableTokenHandler implements TokenHandler {
     private Map<String, String> variables = new HashMap<String, String>();
 
@@ -85,7 +88,8 @@ public class GenericTokenParserTest {
   }
 
   @Ignore("Because it randomly fails on Travis CI. It could be useful during development.")
-  @Test(timeout = 1000)
+//  @Test(timeout = 1000)
+  @Test
   public void shouldParseFastOnJdk7u6() {
     // issue #760
     GenericTokenParser parser = new GenericTokenParser("${", "}", new VariableTokenHandler(new HashMap<String, String>() {

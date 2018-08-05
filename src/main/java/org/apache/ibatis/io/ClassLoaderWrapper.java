@@ -22,14 +22,28 @@ import java.net.URL;
  * A class to wrap access to multiple class loaders making them work as one
  *
  * @author Clinton Begin
- *
- * https://blog.csdn.net/fuzhongmin05/article/details/57404890
- *
- * https://blog.csdn.net/javazejian/article/details/73413292#类加载的机制的层次结构
- * https://blog.csdn.net/javazejian/article/details/73413292
  */
 public class ClassLoaderWrapper {
-
+  /**
+   * http://blog.csdn.net/briblue/article/details/54973413
+   * ClassLoader翻译过来就是类加载器，普通的java开发者其实用到的不多，但对于某些框架开发者来说却非常常见。
+   * 理解ClassLoader的加载机制，也有利于我们编写出更高效的代码。ClassLoader的具体作用就是将class文件加载到jvm虚拟机中去，
+   * 程序就可以正确运行了。但是，jvm启动的时候，并不会一次性加载所有的class文件，而是根据需要去动态加载。
+   * 想想也是的，一次性加载那么多jar包那么多class，那内存不崩溃。
+   *
+   * Java语言系统自带有三个类加载器:
+   *  Bootstrap ClassLoader 最顶层的加载类，主要加载核心类库;
+   *  Extention ClassLoader 扩展的类加载器;
+   *  Appclass Loader也称为SystemAppClass 加载当前应用的classpath的所有类.
+   *
+   * Bootstrap ClassLoader是由C/C++编写的，它本身是虚拟机的一部分，所以它并不是一个JAVA类，
+   * 也就是无法在java代码中获取它的引用，JVM启动时通过Bootstrap类加载器加载rt.jar等核心jar包中的class文件，
+   * 之前的int.class,String.class都是由它加载。然后呢，我们前面已经分析了，JVM初始化sun.misc.Launcher并创建Extension ClassLoader和AppClassLoader实例。
+   * 并将ExtClassLoader设置为AppClassLoader的父加载器。Bootstrap没有父加载器，但是它却可以作用一个ClassLoader的父加载器。比如ExtClassLoader。
+   * 这也可以解释之前通过ExtClassLoader的getParent方法获取为Null的现象。具体是什么原因，很快就知道答案了。
+   *
+   * 自定义classloader(指定加载位置),参考tomcat http://blog.csdn.net/w1196726224/article/details/54428493
+   */
   ClassLoader defaultClassLoader;
   ClassLoader systemClassLoader;
 

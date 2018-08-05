@@ -32,6 +32,10 @@ import org.apache.ibatis.logging.LogFactory;
  * 
  * @author Ben Gunter
  */
+
+/**
+ * http://blog.csdn.net/zsr_251/article/details/50331787
+ */
 public abstract class VFS {
   private static final Log log = LogFactory.getLog(VFS.class);
 

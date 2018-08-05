@@ -16,6 +16,7 @@
 package org.apache.ibatis.parsing;
 
 /**
+ * 通用标记解析器
  * @author Clinton Begin
  */
 public class GenericTokenParser {
@@ -30,6 +31,12 @@ public class GenericTokenParser {
     this.handler = handler;
   }
 
+    /**
+     * 方法长度<50行
+     * 只替换占位符的值，其他都原样保留
+     * @param text 含占位符的字符串
+     * @return 替换占位符后值字符串
+     */
   public String parse(String text) {
     final StringBuilder builder = new StringBuilder();
     final StringBuilder expression = new StringBuilder();
@@ -39,7 +46,7 @@ public class GenericTokenParser {
       // search open token
       int start = text.indexOf(openToken, offset);
       while (start > -1) {
-        if (start > 0 && src[start - 1] == '\\') {
+        if (start > 0 && src[start - 1] == '\\') {  //老的解析方式
           // this open token is escaped. remove the backslash and continue.
           builder.append(src, offset, start - offset - 1).append(openToken);
           offset = start + openToken.length();
@@ -50,7 +57,7 @@ public class GenericTokenParser {
           offset = start + openToken.length();
           int end = text.indexOf(closeToken, offset);
           while (end > -1) {
-            if (end > offset && src[end - 1] == '\\') {
+            if (end > offset && src[end - 1] == '\\') { //老的解析方式
               // this close token is escaped. remove the backslash and continue.
               expression.append(src, offset, end - offset - 1).append(closeToken);
               offset = end + closeToken.length();
