@@ -26,6 +26,9 @@ import java.util.Set;
 import org.apache.ibatis.reflection.ExceptionUtil;
 
 /**
+ * 设计模式：责任链
+ * https://www.cnblogs.com/lizo/p/7503862.html
+ *
  * @author Clinton Begin
  */
 public class Plugin implements InvocationHandler {

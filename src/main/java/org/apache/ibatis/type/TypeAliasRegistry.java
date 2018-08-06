@@ -33,6 +33,9 @@ import org.apache.ibatis.io.ResolverUtil;
 import org.apache.ibatis.io.Resources;
 
 /**
+ * 别名机制
+ * https://blog.csdn.net/qq924862077/article/details/52612589
+ *
  * @author Clinton Begin
  */
 public class TypeAliasRegistry {
@@ -102,6 +105,13 @@ public class TypeAliasRegistry {
 
   @SuppressWarnings("unchecked")
   // throws class cast exception as well if types cannot be assigned
+  /**
+   * new ： 泛型定义
+   *
+   * 泛型的声明，必须在方法的修饰符（public,static,final,abstract等）之后，返回值声明之前。
+   * https://www.cnblogs.com/zhima-hu/p/7352555.html
+   *
+   */
   public <T> Class<T> resolveAlias(String string) {
     try {
       if (string == null) {
@@ -153,6 +163,9 @@ public class TypeAliasRegistry {
     }
     // issue #748
     String key = alias.toLowerCase(Locale.ENGLISH);
+      /**
+       * class equals没有重写 object equals
+       */
     if (TYPE_ALIASES.containsKey(key) && TYPE_ALIASES.get(key) != null && !TYPE_ALIASES.get(key).equals(value)) {
       throw new TypeException("The alias '" + alias + "' is already mapped to the value '" + TYPE_ALIASES.get(key).getName() + "'.");
     }

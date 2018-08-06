@@ -20,6 +20,11 @@ import java.util.Collections;
 import java.util.List;
 
 /**
+ *
+ * 责任链模式，通过动态代理组织多个拦截器（插件），
+ * 通过这些拦截器可以改变Mybatis的默认行为（诸如SQL重写之类的），由于插件会深入到Mybatis的核心
+ *
+ *
  * @author Clinton Begin
  * 重构
  */

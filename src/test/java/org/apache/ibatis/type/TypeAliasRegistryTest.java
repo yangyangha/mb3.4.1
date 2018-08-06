@@ -39,6 +39,9 @@ public class TypeAliasRegistryTest {
     assertEquals(Byte[].class, typeAliasRegistry.resolveAlias("byte[]"));
   }
 
+    /**
+     * 说明：相同的可重复注册；一个类可以有多个alias，一个alias不可对应多个类型
+     */
   @Test
   public void shouldBeAbleToRegisterSameAliasWithSameTypeAgain() {
     TypeAliasRegistry typeAliasRegistry = new TypeAliasRegistry();
@@ -46,6 +49,9 @@ public class TypeAliasRegistryTest {
     typeAliasRegistry.registerAlias("string", String.class);
   }
 
+    /**
+     * 同上
+     */
   @Test(expected = TypeException.class)
   public void shouldNotBeAbleToRegisterSameAliasWithDifferentType() {
     TypeAliasRegistry typeAliasRegistry = new TypeAliasRegistry();
