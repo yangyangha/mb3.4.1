@@ -21,6 +21,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
+ * https://www.cnblogs.com/V1haoge/p/6715063.html
+ *
  * @author Clinton Begin
  */
 public interface TypeHandler<T> {

@@ -21,6 +21,9 @@ import static org.mockito.Mockito.when;
 
 import org.junit.Test;
 
+/**
+ * todo: mock 等单元测试使用
+ */
 public class StringTypeHandlerTest extends BaseTypeHandlerTest {
 
   private static final TypeHandler<String> TYPE_HANDLER = new StringTypeHandler();
