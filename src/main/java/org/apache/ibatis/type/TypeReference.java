@@ -33,6 +33,7 @@ public abstract class TypeReference<T> {
     rawType = getSuperclassTypeParameter(getClass());
   }
 
+  // todo: 类型 https://www.cnblogs.com/V1haoge/p/6715063.html
   Type getSuperclassTypeParameter(Class<?> clazz) {
     Type genericSuperclass = clazz.getGenericSuperclass();
     if (genericSuperclass instanceof Class) {
@@ -53,6 +54,10 @@ public abstract class TypeReference<T> {
 
     return rawType;
   }
+
+    /**
+     *  以下的两个方法修饰符为public 意味着被外部调用
+     */
 
   public final Type getRawType() {
     return rawType;
