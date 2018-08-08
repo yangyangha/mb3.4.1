@@ -27,10 +27,10 @@ public class ExceptionUtilTest {
   public void shouldUnwrapThrowable() {
     Exception exception = new Exception();
     assertEquals(exception, ExceptionUtil.unwrapThrowable(exception));
-    assertEquals(exception, ExceptionUtil.unwrapThrowable(new InvocationTargetException(exception, "test")));
-    assertEquals(exception, ExceptionUtil.unwrapThrowable(new UndeclaredThrowableException(exception, "test")));
-    assertEquals(exception, ExceptionUtil.unwrapThrowable(new InvocationTargetException(new InvocationTargetException(exception, "test"), "test")));
-    assertEquals(exception, ExceptionUtil.unwrapThrowable(new InvocationTargetException(new UndeclaredThrowableException(exception, "test"), "test")));
+    assertEquals(exception, ExceptionUtil.unwrapThrowable(new InvocationTargetException(exception, "com/demo")));
+    assertEquals(exception, ExceptionUtil.unwrapThrowable(new UndeclaredThrowableException(exception, "com/demo")));
+    assertEquals(exception, ExceptionUtil.unwrapThrowable(new InvocationTargetException(new InvocationTargetException(exception, "com/demo"), "com/demo")));
+    assertEquals(exception, ExceptionUtil.unwrapThrowable(new InvocationTargetException(new UndeclaredThrowableException(exception, "com/demo"), "com/demo")));
   }
 
 }

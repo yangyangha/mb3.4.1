@@ -41,7 +41,7 @@ public class MyBatisTest {
   public void test() {
     SqlSession session = sqlSessionFactory.openSession();
     try {
-      ParentBean parentBean = session.selectOne("test");
+      ParentBean parentBean = session.selectOne("com/demo");
       Assert.assertEquals("p1", parentBean.getName());
 //    Assert.assertThat(parentBean.toString(), CoreMatchers.is("ParentBean [name=p1, client=ChildBean [name=null, child=ChildBean [name=null, child=null, beans=null], beans=null]]"));      
       

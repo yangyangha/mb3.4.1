@@ -91,6 +91,17 @@ import org.apache.ibatis.type.TypeAliasRegistry;
 import org.apache.ibatis.type.TypeHandlerRegistry;
 
 /**
+ * 加载： https://blog.csdn.net/ashan_li/article/details/50338695
+ *
+ *
+ * mybatis的配置信息
+ * 两部分：
+ *  1、从mybatis-config.xml中读取的配置
+ *  2、从mapper配置文件或Mapper注解读取的配置
+ *
+ *  针对mybatis-config.xml配置文件和Mapper配置文件，Mybatis也是由两个相对应的类来解析的。
+ XMLConfigBuilder解析mybatis-config.xml的配置到Configuration中
+ XMLMapperBuilder解析Mapper配置文件的配置到Configuration中
  * @author Clinton Begin
  */
 public class Configuration {
@@ -143,8 +154,14 @@ public class Configuration {
   protected final TypeAliasRegistry typeAliasRegistry = new TypeAliasRegistry();
   protected final LanguageDriverRegistry languageRegistry = new LanguageDriverRegistry();
 
+    /**
+     * mapper 配置文件,主要是配置select/update/insert/delete/resultMap这几个节点
+     */
+    //mappedStatements属性，保存了所有Mapper配置文件中的select/update/insert/delete节点信息。
+    // 属性类型为一个Map,key为sql对应的ID,MappedSatement为一个java对象，保存了一个select/update/insert/delete的节点信息。
   protected final Map<String, MappedStatement> mappedStatements = new StrictMap<MappedStatement>("Mapped Statements collection");
   protected final Map<String, Cache> caches = new StrictMap<Cache>("Caches collection");
+    //resultMaps属性，保存了所有Mapper配置文件中的resultMap节点。
   protected final Map<String, ResultMap> resultMaps = new StrictMap<ResultMap>("Result Maps collection");
   protected final Map<String, ParameterMap> parameterMaps = new StrictMap<ParameterMap>("Parameter Maps collection");
   protected final Map<String, KeyGenerator> keyGenerators = new StrictMap<KeyGenerator>("Key Generators collection");
