@@ -32,12 +32,14 @@ import org.apache.ibatis.transaction.TransactionFactory;
 import org.apache.ibatis.transaction.managed.ManagedTransactionFactory;
 
 /**
+ * 引用配置configuration对象
  * @author Clinton Begin
  */
 public class DefaultSqlSessionFactory implements SqlSessionFactory {
 
   private final Configuration configuration;
 
+  //引用配置configuration对象
   public DefaultSqlSessionFactory(Configuration configuration) {
     this.configuration = configuration;
   }

@@ -5,4 +5,8 @@
     <select id="selectUser" parameterType="int" resultType="pr.demo.entity.User">
         select * from User where id = #{id}
     </select>
+
+    <insert id="insertUser" parameterType="pr.demo.entity.User">
+        INSERT INTO USER VALUES (#{id},#{username},#{password})
+    </insert>
 </mapper>

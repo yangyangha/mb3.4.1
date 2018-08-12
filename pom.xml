@@ -160,17 +160,35 @@
       <optional>true</optional>
     </dependency>
     <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-log4j12</artifactId>
-      <version>1.7.21</version>
-      <optional>true</optional>
-    </dependency>
-    <dependency>
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>
       <version>1.2.17</version>
       <optional>true</optional>
     </dependency>
+
+      <!--  log start
+      注释掉以下原有的重复依赖，新增以下依赖
+      -->
+      <!--<dependency>-->
+      <!--<groupId>org.slf4j</groupId>-->
+      <!--<artifactId>slf4j-log4j12</artifactId>-->
+      <!--<version>1.7.21</version>-->
+      <!--<optional>true</optional>-->
+      <!--</dependency>-->
+  <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>1.2.3</version>
+  </dependency>
+    <!--
+    会导入如下类
+    logback-classic.x.x.x.jar
+    logback-core.x.x.x.jar
+    slf4j-api-x.x.x.jar
+    -->
+      <!-- log end-->
+
+
     <!-- Don't upgrade to 2.4+ until mybatis switches to java 7 -->
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
