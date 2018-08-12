@@ -16,6 +16,8 @@
 package org.apache.ibatis.session;
 
 /**
+ * Mybatis如何分页查询？Mysql中可以使用limit语句，但limit并不是标准SQL中的，如果是其它的数据库，则需要使用其它语句。
+ * MyBatis提供了RowBounds类，用于实现分页查询。RowBounds中有两个数字，offset和limit。
  * @author Clinton Begin
  */
 public class RowBounds {

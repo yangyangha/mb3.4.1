@@ -34,6 +34,11 @@ import org.apache.ibatis.transaction.Transaction;
  *          装饰模式：SimpleExecutor是Executor的装饰器。
  *
  *          这两种设计模式在spring中多次使用。
+ *
+ *
+ *          Mybatis中所有的Mapper语句的执行都是通过Executor进行的，Executor是Mybatis的一个核心接口，其定义如下。
+ *          从其定义的接口方法我们可以看出，对应的增删改语句是通过Executor接口的update方法进行的.
+ *          Executor是跟SqlSession绑定在一起的，每一个SqlSession都拥有一个新的Executor对象，由Configuration创建。
  */
 public interface Executor {
 
