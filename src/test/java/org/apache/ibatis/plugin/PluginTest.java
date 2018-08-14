@@ -29,6 +29,7 @@ public class PluginTest {
   public void mapPluginShouldInterceptGet() {
     Map map = new HashMap();
     map = (Map) new AlwaysMapPlugin().plugin(map);
+      System.out.println(map.get("Anything"));
     assertEquals("Always", map.get("Anything"));
   }
 

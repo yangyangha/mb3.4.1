@@ -29,12 +29,26 @@ import org.apache.ibatis.reflection.ExceptionUtil;
  * 设计模式：责任链
  * https://www.cnblogs.com/lizo/p/7503862.html
  *
+ * 组合模式使用：责任链、动态代理。
+ * inceptor 拦截器使用责任链模式拦截请求，inceptor的调用访问是动态代理方式生成其代理对象，通过代理对象来调用inceptor对象方法。
+ *
+ * http://www.runoob.com/design-pattern/proxy-pattern.html
+ * https://blog.csdn.net/u011784767/article/details/78281384
+ * https://www.cnblogs.com/lizo/p/7503862.html
+ *
+ * 在动态代理模式看，plugin生成代理。
+ *
  * @author Clinton Begin
+ *
+ * JDK动态代理机制 InvocationHandler
  */
 public class Plugin implements InvocationHandler {
 
+    //目标对象:即要被代理的对象
   private Object target;
+    //拦截器
   private Interceptor interceptor;
+    //记录需要被拦截的类与方法
   private Map<Class<?>, Set<Method>> signatureMap;
 
   private Plugin(Object target, Interceptor interceptor, Map<Class<?>, Set<Method>> signatureMap) {
@@ -43,11 +57,15 @@ public class Plugin implements InvocationHandler {
     this.signatureMap = signatureMap;
   }
 
+    /**
+     * 方法可以决定要返回的对象是目标对象还是对应的代理;
+     * 一个静态方法,对一个目标对象进行包装，生成代理类。
+     */
   public static Object wrap(Object target, Interceptor interceptor) {
     Map<Class<?>, Set<Method>> signatureMap = getSignatureMap(interceptor);
     Class<?> type = target.getClass();
     Class<?>[] interfaces = getAllInterfaces(type, signatureMap);
-    if (interfaces.length > 0) {
+    if (interfaces.length > 0) {    //如果长度为>0 则返回代理类; 否则不做处理,返回目标对象
       return Proxy.newProxyInstance(
           type.getClassLoader(),
           interfaces,
@@ -56,17 +74,17 @@ public class Plugin implements InvocationHandler {
     return target;
   }
 
-    /**
-     * 动态代理
-     *
-     */
+    //代理对象每次调用的方法
   @Override
   public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
     try {
+        //通过method参数定义的类 去signatureMap当中查询需要拦截的方法集合
       Set<Method> methods = signatureMap.get(method.getDeclaringClass());
+        //判断是否需要拦截
       if (methods != null && methods.contains(method)) {
         return interceptor.intercept(new Invocation(target, method, args));
       }
+        //不拦截 直接通过目标对象调用方法
       return method.invoke(target, args);
     } catch (Exception e) {
       throw ExceptionUtil.unwrapThrowable(e);

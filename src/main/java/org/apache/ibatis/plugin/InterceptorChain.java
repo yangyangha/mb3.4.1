@@ -32,6 +32,12 @@ public class InterceptorChain {
 
   private final List<Interceptor> interceptors = new ArrayList<Interceptor>();
 
+    /**
+     *  泛型<T>和object重要区别之一便是：使用泛型时，多是参数类型和返回值类有相关性；object没有
+     *  此方法采用object 便是target类型与返回值类型没有相关性
+     * @param target 被拦截的对象
+     * @return can be anthing.
+     */
   public Object pluginAll(Object target) {
     for (Interceptor interceptor : interceptors) {
       target = interceptor.plugin(target);
