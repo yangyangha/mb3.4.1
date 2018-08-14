@@ -3,9 +3,16 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+    <!--
+    注意configuration中各个属性配置的顺序应为：properties,settings,typeAliases,typeHandlers,objectFactory,objectWrapperFactory,reflectorFactory,
+    plugins,environments,databaseIdProvider,mappers)
+    -->
     <typeAliases>
         <typeAlias type="pr.demo.entity.User" alias="User" />
     </typeAliases>
+    <plugins>
+        <plugin interceptor="org.apache.ibatis.plugin.Test_myinterceptor"></plugin>
+    </plugins>
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC" />

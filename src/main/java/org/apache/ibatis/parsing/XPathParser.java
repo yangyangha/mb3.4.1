@@ -41,8 +41,25 @@ import org.xml.sax.SAXParseException;
 
 /**
  *
+ * xpath一种查找xml节点的语法，它让我们在解析xml后查找哪个节点变得更简单化。
+ * http://www.w3school.com.cn/xpath/index.asp
+ *
+ *
+ * demo：
+ *  https://blog.csdn.net/qq_27853161/article/details/53641512
+ *
  * https://www.jianshu.com/p/ec40a82cae28
  * document 解析方式 https://www.cnblogs.com/longqingyang/p/5577937.html
+ *
+ * JAVA 解析 XML 通常有两种方式:DOM 和SAX。DOM（文档对象模型）是W3C标准，提供了标准的解析方式，但其解析效率一直不尽如人意，这是因为DOM解析XML文档时，
+ * 把所有内容一次性的装载入内存，并构建一个驻留在内存中的树状结构（节点数）。
+ * 如果需要解析的XML文档过大，或者我们只对该文档中的一部分感兴趣，这样就会引起性能问题。
+ *
+ * Sax解析(只能读取，不能想dom一样修改)：
+ 加载一点，读取一点，处理一点，对内存要求低
+ Sax解析工具(oracle官方的，都用)：内置带jdk中，org.xml.sax.*
+
+
  * @author Clinton Begin
  */
 public class XPathParser {

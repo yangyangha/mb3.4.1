@@ -15,6 +15,10 @@
        See the License for the specific language governing permissions and
        limitations under the License.
 
+
+       dtd：文档类型定义，用于xml元素等约束
+       http://www.runoob.com/dtd/dtd-examples.html
+
 -->
 <!ELEMENT configuration (properties?, settings?, typeAliases?, typeHandlers?, objectFactory?, objectWrapperFactory?, reflectorFactory?, plugins?, environments?, databaseIdProvider?, mappers?)>
 

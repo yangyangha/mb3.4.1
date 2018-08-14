@@ -60,6 +60,15 @@ public class XMLConfigBuilder extends BaseBuilder {
   private String environment;
   private ReflectorFactory localReflectorFactory = new DefaultReflectorFactory();
 
+  /***
+   * 两类构造方法：1、读取字符流 2、读取字节流
+   * @param reader 配置文件字符流
+   */
+
+    /**
+     *  字符流
+     */
+
   public XMLConfigBuilder(Reader reader) {
     this(reader, null, null);
   }
@@ -72,6 +81,11 @@ public class XMLConfigBuilder extends BaseBuilder {
     this(new XPathParser(reader, true, props, new XMLMapperEntityResolver()), environment, props);
   }
 
+
+    /**
+     *  字节流
+     */
+
   public XMLConfigBuilder(InputStream inputStream) {
     this(inputStream, null, null);
   }
@@ -83,6 +97,7 @@ public class XMLConfigBuilder extends BaseBuilder {
   public XMLConfigBuilder(InputStream inputStream, String environment, Properties props) {
     this(new XPathParser(inputStream, true, props, new XMLMapperEntityResolver()), environment, props);
   }
+
 
   private XMLConfigBuilder(XPathParser parser, String environment, Properties props) {
     super(new Configuration());
