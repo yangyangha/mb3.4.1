@@ -27,7 +27,7 @@ import java.util.Properties;
 
 /**
  * A class to simplify access to resources through the classloader.
- *
+ * 工具类：可使从 classpath 或其他位置加载资源文件更加容易
  * @author Clinton Begin
  */
 public class Resources {

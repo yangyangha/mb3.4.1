@@ -50,6 +50,8 @@ import org.apache.ibatis.type.JdbcType;
  * 针对mybatis-config.xml配置文件和Mapper配置文件，Mybatis也是由两个相对应的类来解析的。
  XMLConfigBuilder解析mybatis-config.xml的配置到Configuration中
  XMLMapperBuilder解析Mapper配置文件的配置到Configuration中
+
+ http://zhouqing86.github.io/2017/11/03/mybatis-source-code/
  * @author Clinton Begin
  * @author Kazuki Shimizu
  */

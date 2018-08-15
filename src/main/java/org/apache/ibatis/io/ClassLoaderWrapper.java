@@ -19,6 +19,11 @@ import java.io.InputStream;
 import java.net.URL;
 
 /**
+ *
+ * ClassLoaderWrapper 是一个ClassLoader 的包装器，其中包含了多个ClassLoader 对象，
+ * 通过调整多个类加载器的使用顺序，ClassLoaderWrapper 可以确保返回给系统使用的是正确的类加载器
+ *
+ * 
  * A class to wrap access to multiple class loaders making them work as one
  *
  * @author Clinton Begin
@@ -130,12 +135,14 @@ public class ClassLoaderWrapper {
     return classForName(name, getClassLoaders(classLoader));
   }
 
-  /*
+  /**
    * Try to get a resource from a group of classloaders
    *
    * @param resource    - the resource to get
    * @param classLoader - the classloaders to examine
    * @return the resource or null
+   *
+   * 按照ClassLoader[] 加载器的顺序进行加载，返回InputStream
    */
   InputStream getResourceAsStream(String resource, ClassLoader[] classLoader) {
     for (ClassLoader cl : classLoader) {
@@ -231,12 +238,18 @@ public class ClassLoaderWrapper {
   }
 
   //https://blog.csdn.net/peter_k/article/details/1667685
+    //// TODO: 2018/8/15 :理解各个类加载器的区别 
   ClassLoader[] getClassLoaders(ClassLoader classLoader) {
     return new ClassLoader[]{
+            //参数指定的类加载器
         classLoader,
+            //系统指定的默认加载器
         defaultClassLoader,
+            //当前线程绑定的类加载器
         Thread.currentThread().getContextClassLoader(),
+            //当前类使用的类加载器
         getClass().getClassLoader(),
+            //应用类加载器 classpath路径上的
         systemClassLoader};
   }
 

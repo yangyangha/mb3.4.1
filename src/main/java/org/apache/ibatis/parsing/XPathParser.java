@@ -41,9 +41,11 @@ import org.xml.sax.SAXParseException;
 
 /**
  *
+ * dom方式解析配置文件后，使用xpath语言方式来查找、读取解析后的值。
+ *
+ *
  * xpath一种查找xml节点的语法，它让我们在解析xml后查找哪个节点变得更简单化。
  * http://www.w3school.com.cn/xpath/index.asp
- *
  *
  * demo：
  *  https://blog.csdn.net/qq_27853161/article/details/53641512
@@ -245,9 +247,15 @@ public class XPathParser {
     }
   }
 
+    /**
+     * 使用dom方式解析xml配置文件
+     * @param inputSource inputsource
+     * @return document类型
+     */
   private Document createDocument(InputSource inputSource) {
     // important: this must only be called AFTER common constructor
     try {
+      //xml解析方式：dom Java平台提供方法 DocumentBuilderFactory.newInstance() factory.newDocumentBuilder();
       DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
       factory.setValidating(validation);
 
