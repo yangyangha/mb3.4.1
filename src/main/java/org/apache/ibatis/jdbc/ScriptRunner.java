@@ -138,6 +138,7 @@ public class ScriptRunner {
       String line;
       while ((line = lineReader.readLine()) != null) {
         command = handleLine(command, line);
+        System.out.println("command is :"+command);  //打印
       }
       commitConnection();
       checkForMissingLineTerminator(command);
@@ -203,7 +204,7 @@ public class ScriptRunner {
       println(trimmedLine);
     } else if (commandReadyToExecute(trimmedLine)) {
       command.append(line.substring(0, line.lastIndexOf(delimiter)));
-      command.append(LINE_SEPARATOR);
+      command.append(LINE_SEPARATOR);//todo:工具类scriptrunner为什么要在这里加入分隔符。connecting不要求使用'；'，只有sql也许啊；还有为什么不使用批量执行方式，是因为担心sql脚本太大？
       println(command);
       executeStatement(command.toString());
       command.setLength(0);

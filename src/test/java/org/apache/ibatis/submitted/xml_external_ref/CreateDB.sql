@@ -13,7 +13,7 @@
 --    See the License for the specific language governing permissions and
 --    limitations under the License.
 --
-
+-- 根据代码，这个工具类scriptrunner的功能较为单一，只能执行首行且分隔符'；'之前的一个sql语句，并且如果一行只有一个'；'内容时，也会执行失败，而不能跳过去。
 drop table if exists person;
 create table person (person_id int, person_name varchar(32));
 
