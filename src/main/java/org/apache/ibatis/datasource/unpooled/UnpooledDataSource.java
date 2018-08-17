@@ -32,6 +32,8 @@ import javax.sql.DataSource;
 import org.apache.ibatis.io.Resources;
 
 /**
+ * MyBatis内置了两个DataSource的实现：UnpooledDataSource，该数据源对于每次获取请求都简单的打开和关闭连接。
+ * PooledDataSource，该数据源在Unpooled的基础上构建了连接池。
  * @author Clinton Begin
  * @author Eduardo Macarron
  */
@@ -39,6 +41,7 @@ public class UnpooledDataSource implements DataSource {
   
   private ClassLoader driverClassLoader;
   private Properties driverProperties;
+    //所有已注册的驱动，仅仅用于识别驱动在DriverManager中是否已经被加载进来了
   private static Map<String, Driver> registeredDrivers = new ConcurrentHashMap<String, Driver>();
 
   private String driver;

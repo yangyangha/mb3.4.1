@@ -33,6 +33,7 @@ import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
 
 /**
+ * 除了UNPOOLED的配置外，还可以配置其它的一些属性
  * This is a simple, synchronous, thread-safe database connection pool.
  *
  * @author Clinton Begin
